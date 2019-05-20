@@ -192,7 +192,7 @@ pub func SetupGame(game: *Game) void {
     }
 
     var display = al_create_display(BOARD_WIDTH,BOARD_HEIGHT + 50);
-    game.display = display as *ALLEGRO_DISPLAY;
+    game.display = display;
     al_set_window_position(game.display as *ALLEGRO_DISPLAY,560,420);
     al_set_window_title(game.display as *ALLEGRO_DISPLAY,"Snake");
 
@@ -448,6 +448,8 @@ pub func SetGame(game: *Game) void {
 }
 
 pub func (game: *Game) draw() void {
+    
+
     al_draw_filled_rectangle(0.0F,0.0F,BOARD_WIDTH as f32,BOARD_HEIGHT as f32 + 50 as f32,al_map_rgb(255 as u8,255 as u8,255 as u8));
     al_draw_line(0.0F,BOARD_HEIGHT as f32,BOARD_WIDTH as f32,BOARD_HEIGHT as f32,al_map_rgb(0 as u8,0 as u8,0 as u8),2.0F);
     al_draw_textf(game.font_30 as *ALLEGRO_FONT,al_map_rgb(0 as u8,0 as u8,0 as u8),BOARD_WIDTH as f32 / 2.0F,BOARD_HEIGHT as f32 + 15.0F,ALLEGRO_ALIGN_CENTRE,"Score %d",game.score);
